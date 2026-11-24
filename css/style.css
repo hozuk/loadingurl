@@ -231,6 +231,12 @@ body {
 
 .clock { color: rgba(255, 240, 236, .85); font-variant-numeric: tabular-nums; }
 
+.top-steam { display: flex; align-items: center; gap: .45vw; }
+
+.top-steam-k { color: rgba(255, 120, 120, .55); letter-spacing: .2em; }
+
+.top-steam b { font-weight: 400; color: rgba(255, 240, 236, .85); font-variant-numeric: tabular-nums; }
+
 /* ------------------------------------------------------------- ЦЕНТР ---- */
 
 .core {
@@ -636,10 +642,6 @@ body {
 
 .bottom-meta { display: flex; align-items: center; gap: 1.1vw; white-space: nowrap; }
 
-.bottom-meta b { font-weight: 400; color: rgba(255, 198, 193, .62); }
-
-.bottom-divider { width: 1px; height: .8vw; background: rgba(255, 255, 255, .14); }
-
 .side-label {
   position: absolute;
   z-index: 7;
@@ -674,6 +676,7 @@ body {
 @media (max-width: 1100px) {
   .brand-name { font-size: 12px; }
   .brand-tag, .top-meta, .conn, .clock { font-size: 9px; }
+  .top-steam-k { font-size: 8px; }
   .kicker { font-size: 8px; }
   .title { font-size: 15vw; }
   .title-rule em { font-size: 15px; }
@@ -709,5 +712,7 @@ body {
   .bottom-row { flex-direction: column; align-items: flex-start; gap: 8px; }
   .tip-text { white-space: normal; }
   .bottom-meta { justify-content: space-between; width: 100%; }
+  .top-steam-k { display: none; }
+  .top-meta { gap: 6px; }
   .side-label { display: none; }
 }
