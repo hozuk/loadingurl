@@ -28,6 +28,13 @@ jobs:
           cp -R index.html css js assets _site/
           touch _site/.nojekyll
 
+      # Версия в ссылках на css, js, шрифты и фото: после пуша клиент скачает
+      # новые файлы, даже если старый HTML ещё лежит в кэше.
+      - name: Stamp asset versions
+        env:
+          SITE_VERSION: ${{ github.sha }}
+        run: node scripts/stamp-assets.mjs
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
