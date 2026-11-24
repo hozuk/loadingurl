@@ -20,6 +20,18 @@ gmod/lua/autorun/server/   аддон, который прописывает sv_
 
 Загрузите папку на статический хостинг с публичным HTTPS: Cloudflare Pages, GitHub Pages, Netlify, Vercel или свой nginx. Затем откройте адрес в браузере. Появятся заголовок, бегущая строка и демонстрационный прогресс. Демо включается только вне Garry's Mod, так удобно проверять оформление.
 
+### Автопубликация через GitHub Actions
+
+В репозитории лежит workflow `.github/workflows/pages.yml`. Он собирает папку `_site` из `index.html`, `css/`, `js/` и `assets/` и публикует её на GitHub Pages при каждом пуше в `main`. Запустить вручную можно через Actions → Deploy loading screen → Run workflow.
+
+GitHub требует один раз указать источник публикации. В Settings → Pages выберите Source: `GitHub Actions`. Если Pages ещё не включён, то же самое делает одна команда с правами администратора репозитория:
+
+```bash
+gh api -X POST repos/hozuk/loadingurl/pages -f build_type=workflow
+```
+
+После первого успешного запуска сайт будет доступен по адресу `https://hozuk.github.io/loadingurl/`. Дальше каждый коммит в `main` обновляет страницу автоматически.
+
 ## 2. Подключить к серверу
 
 Добавьте строку в `garrysmod/cfg/server.cfg`:
