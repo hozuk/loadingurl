@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Red Night | SCP RP</title>
+<meta name="description" content="Экран загрузки сервера Red Night | SCP RP для Garry's Mod.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23070304'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23ff2b33' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23ff2b33'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="stage" id="stage">
+
+  <!-- ============ ФОН ============ -->
+  <div class="bg" id="bg" aria-hidden="true">
+    <div class="bg-img is-on" style="background-image:url('assets/img/14251843.jpg')"></div>
+    <div class="bg-img" style="background-image:url('assets/img/23885558.jpg')"></div>
+    <div class="bg-img" style="background-image:url('assets/img/39452442.jpg')"></div>
+    <div class="bg-img" style="background-image:url('assets/img/14664521.jpg')"></div>
+  </div>
+  <div class="bg-grade" aria-hidden="true"></div>
+  <div class="bg-scan" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
+  <div class="bg-vignette" aria-hidden="true"></div>
+  <canvas class="embers" id="embers" width="640" height="360" aria-hidden="true"></canvas>
+
+  <div class="frame" aria-hidden="true">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+  </div>
+
+  <!-- ============ ШАПКА ============ -->
+  <header class="top">
+    <div class="top-brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">RED&nbsp;NIGHT</span>
+      <span class="brand-sep">//</span>
+      <span class="brand-tag">SCP RP</span>
+    </div>
+    <div class="top-line"></div>
+    <div class="top-meta">
+      <span class="pulse-dot"></span>
+      <span class="conn" id="conn">УСТАНОВКА СОЕДИНЕНИЯ</span>
+      <span class="top-divider"></span>
+      <span class="clock" id="clock">00:00:00</span>
+    </div>
+  </header>
+
+  <!-- ============ ЦЕНТР ============ -->
+  <main class="core">
+    <div class="emblem" id="emblem">
+      <svg viewBox="0 0 200 200" role="img" aria-label="Эмблема Red Night">
+        <defs>
+          <radialGradient id="coreGrad" cx="46%" cy="42%" r="66%">
+            <stop offset="0%" stop-color="#ff5252"/>
+            <stop offset="55%" stop-color="#c81420"/>
+            <stop offset="100%" stop-color="#3a0409"/>
+          </radialGradient>
+          <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ff3b3b"/>
+            <stop offset="48%" stop-color="#5c060b"/>
+            <stop offset="100%" stop-color="#ff3b3b"/>
+          </linearGradient>
+          <mask id="crescent">
+            <rect width="200" height="200" fill="#000"/>
+            <circle cx="100" cy="100" r="45" fill="#fff"/>
+            <circle cx="74" cy="88" r="45" fill="#000"/>
+          </mask>
+        </defs>
+        <circle class="em-dash" cx="100" cy="100" r="93" fill="none" stroke="#ff2b33" stroke-width="1.4" stroke-dasharray="2 8" opacity=".5"/>
+        <g class="em-ticks" fill="#ff2b33">
+          <rect x="99" y="5" width="2" height="9" opacity=".85"/>
+          <rect x="99" y="186" width="2" height="9" opacity=".85"/>
+          <rect x="5" y="99" width="9" height="2" opacity=".85"/>
+          <rect x="186" y="99" width="9" height="2" opacity=".85"/>
+          <rect x="27" y="27" width="2" height="7" transform="rotate(-45 28 30)" opacity=".4"/>
+          <rect x="171" y="27" width="2" height="7" transform="rotate(45 172 30)" opacity=".4"/>
+          <rect x="27" y="166" width="2" height="7" transform="rotate(45 28 169)" opacity=".4"/>
+          <rect x="171" y="166" width="2" height="7" transform="rotate(-45 172 169)" opacity=".4"/>
+        </g>
+        <circle cx="100" cy="100" r="78" fill="none" stroke="url(#ringGrad)" stroke-width="2"/>
+        <circle cx="100" cy="100" r="70" fill="#080203" stroke="#4a0509" stroke-width="1"/>
+        <circle cx="100" cy="100" r="56" fill="#0b0102" stroke="#ff2b33" stroke-width=".8" opacity=".7"/>
+        <circle class="em-pulse" cx="100" cy="100" r="50" fill="url(#coreGrad)" opacity=".55"/>
+        <circle cx="100" cy="100" r="45" fill="#ff2b33" mask="url(#crescent)" class="em-crescent"/>
+        <circle cx="100" cy="100" r="45" fill="none" stroke="#ff8a80" stroke-width=".6" opacity=".35"/>
+        <path d="M100 36 L104 44 L100 52 L96 44 Z" fill="#ff2b33" opacity=".9"/>
+      </svg>
+    </div>
+
+    <p class="kicker">СЕРВЕР АНОМАЛЬНЫХ ИНЦИДЕНТОВ · УРОВЕНЬ ДОСТУПА IV</p>
+
+    <h1 class="title">
+      <span class="title-red">RED</span><span class="title-night">NIGHT</span>
+    </h1>
+
+    <div class="title-rule"><span></span><em>SCP RP</em><span></span></div>
+
+    <p class="tagline">Ночь, когда всё пошло не по протоколу</p>
+  </main>
+
+  <!-- ============ HUD ЗАГРУЗКИ ============ -->
+  <section class="hud">
+    <div class="hud-percent">
+      <div class="hud-label">ЗАГРУЗКА РЕСУРСОВ</div>
+      <div class="pct"><span id="pct">0</span><i>%</i></div>
+    </div>
+
+    <div class="hud-bar">
+      <div class="bar" id="bar">
+        <div class="bar-warn"></div>
+        <div class="bar-fill" id="barFill"><span class="bar-edge"></span></div>
+        <div class="bar-scan"></div>
+      </div>
+      <div class="bar-meta">
+        <span class="status" id="status">Проверка целостности протокола…</span>
+        <span class="file" id="file">—</span>
+      </div>
+    </div>
+
+    <div class="hud-stats">
+      <div class="stat">
+        <span class="stat-k">КАРТА</span>
+        <b class="stat-v" id="mapName">—</b>
+      </div>
+      <div class="stat">
+        <span class="stat-k">РЕЖИМ</span>
+        <b class="stat-v" id="gamemode">SCP RP</b>
+      </div>
+      <div class="stat">
+        <span class="stat-k">ФАЙЛЫ</span>
+        <b class="stat-v"><span id="filesDone">0</span><span class="stat-slash">/</span><span id="filesTotal">0</span></b>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ПОДВАЛ ============ -->
+  <footer class="bottom">
+    <div class="ticker">
+      <span class="ticker-tag">ВНИМАНИЕ</span>
+      <div class="ticker-view">
+        <div class="ticker-track">
+          <span>КРАСНЫЙ УРОВЕНЬ УГРОЗЫ</span><i>◆</i>
+          <span>НЕ ДОВЕРЯЙТЕ ГОЛОСАМ В РАЦИИ</span><i>◆</i>
+          <span>СВЕТ В КОРИДОРЕ НЕ ГАРАНТИРУЕТ БЕЗОПАСНОСТЬ</span><i>◆</i>
+          <span>ПРИ ГАЛЛЮЦИНАЦИЯХ — ДОЛОЖИТЕ СТАРШЕМУ</span><i>◆</i>
+          <span>НЕ ОТКРЫВАЙТЕ ДВЕРИ БЕЗ ПРИКАЗА</span><i>◆</i>
+          <span>КРАСНЫЙ УРОВЕНЬ УГРОЗЫ</span><i>◆</i>
+          <span>НЕ ДОВЕРЯЙТЕ ГОЛОСАМ В РАЦИИ</span><i>◆</i>
+          <span>СВЕТ В КОРИДОРЕ НЕ ГАРАНТИРУЕТ БЕЗОПАСНОСТЬ</span><i>◆</i>
+          <span>ПРИ ГАЛЛЮЦИНАЦИЯХ — ДОЛОЖИТЕ СТАРШЕМУ</span><i>◆</i>
+          <span>НЕ ОТКРЫВАЙТЕ ДВЕРИ БЕЗ ПРИКАЗА</span><i>◆</i>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-row">
+      <div class="tip">
+        <span class="tip-tag">СОВЕТ</span>
+        <span class="tip-text" id="tipText">Держите рацию включённой. Тишина в эфире — тоже информация.</span>
+      </div>
+      <div class="bottom-meta">
+        <span>STEAMID&nbsp;<b id="steamId">—</b></span>
+        <span class="bottom-divider"></span>
+        <span>RED NIGHT // SCP RP</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="side-label" aria-hidden="true">УРОВЕНЬ ДОСТУПА IV · RED NIGHT · SCP RP</div>
+</div>
+
+<script src="js/loading.js"></script>
+</body>
+</html>
